@@ -1,0 +1,89 @@
+﻿@*Abbie Luper's Movie Form Page*@
+
+@{
+    ViewData["Title"] = "Movie Form";
+    ViewData["Header"] = "Add New Movie";
+}
+
+@model Mission5.Models.MovieModel
+
+<br />
+<fieldset style="width: 250px;">
+    <form method="post">
+        <h4 class="Headers">Add a Movie</h4>
+        <br />
+
+        @*category*@
+        <label asp-for="CategoryId">Category:</label>
+        <br />
+        <select asp-for="CategoryId">
+            <option value="">Select a Category</option>
+            @*Category is name of model*@
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
+        <br /><br />
+
+        @*title*@
+        <label asp-for="Title">Title:</label>
+        <br />
+        <input id="Title" asp-for="Title" required />
+        <br /><br />
+
+        @*year*@
+        <label asp-for="Year">Year:</label>
+        <br />
+        <input id="Year" asp-for="Year" required />
+        <br /><br />
+
+        @*director*@
+        <label asp-for="Director">Director:</label>
+        <br />
+        <input id="Director" asp-for="Director" required />
+        <br /><br />
+
+        @*rating -- use dropdown menu for G, PG, PG-13, R*@
+        <label asp-for="Rating">Rating: </label>
+        <select asp-for="Rating">
+            <option value="">Select a Rating</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <br /><br />
+
+        @*edited -- yes/no (true/false) option --optional*@
+        <label asp-for="Edited">Edited? </label>
+        <select asp-for="Edited">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br /><br />
+
+        @*lent to --optional*@
+        <label asp-for="Lent">Lent to:</label>
+        <br />
+        <input id="Lent" asp-for="Lent" />
+        <br /><br />
+
+        @*notes --optional -- max 25 characters*@
+        <label asp-for="Notes">Notes:</label>
+        <br />
+        <textarea id="Notes" asp-for="Notes" maxlength="25">
+        </textarea>
+
+        <br /><br /><br />
+
+        <input id="submitButton" type="submit" value="Add Movie" class="button" />
+        <br /><br />
+
+        <div asp-validation-summary="All"></div>
+    </form>
+    <br />
+</fieldset>
+
+
+

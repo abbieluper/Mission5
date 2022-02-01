@@ -1,0 +1,18 @@
+﻿@*This is the delete confirmation page*@
+
+@{
+    ViewData["Title"] = "Delete Movie";
+    ViewData["Header"] = "Confirm Deletion";
+}
+
+@model MovieModel
+
+<h4>Are you sure you want to delete @Model.Title from the collection?</h4>
+<br />
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <br /><br />
+    <a asp-controller="Home" asp-action="ViewMovies" class="btn btn-primary">Cancel</a>
+
+    <input type="hidden" asp-for="MovieId" />
+</form>
